@@ -2,7 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+backend/shortener/migrations/
+backend/shortener/__pycache__/
+backend/url_shortener_backend/__pycache__/
+backend/url_shortener_backend/settings.py
 # Virtual environment
 .venv/
 venv/
