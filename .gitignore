@@ -34,6 +34,7 @@ dist/
 # Environment variables
 .env
 .env.local
+.venv
 
 # IDE and OS files
 .vscode/
