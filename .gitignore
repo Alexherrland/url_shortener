@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+
+# Django stuff
+*.sqlite3
+/db.sqlite3
+/media/
+/static/
+/staticfiles/
+/local_settings.py
+/config.json
+
+# Logs
+logs/
+*.log
+
+# Node.js stuff
+node_modules/
+yarn.lock
+package-lock.json
+
+# Build output
+build/
+dist/
+*.min.js
+*.min.css
+
+# Environment variables
+.env
+.env.local
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Django migrations (optional)
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/__pycache__/

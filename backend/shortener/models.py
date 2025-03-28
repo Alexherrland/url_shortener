@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import URLValidator
 import string
 import random
@@ -8,6 +9,10 @@ class ShortURL(models.Model):
     short_code = models.CharField(max_length=10, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     clicks = models.IntegerField(default=0)
+    
+    # user association
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    cookie_id = models.CharField(max_length=255, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.short_code:
