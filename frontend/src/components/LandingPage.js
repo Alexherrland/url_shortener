@@ -72,15 +72,49 @@ export default function LandingPage() {
                 )}
             </main>
 
-            <footer className="bg-gray-900 text-white py-4 md:py-8 text-center mt-auto">
-                <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-                    <p className="text-sm md:text-base mb-2 md:mb-0">
-                        &copy; 2025 URL Shortener
-                    </p>
-                    <div className="flex space-x-4 text-sm md:text-base">
-                        <a href="#" className="hover:text-blue-300">Privacidad</a>
-                        <a href="#" className="hover:text-blue-300">Términos</a>
-                        <a href="#" className="hover:text-blue-300">Contacto</a>
+            <footer className="bg-gray-900 text-white py-6 md:py-10">
+                <div className="container mx-auto px-4">
+                    <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+                        <div className="mb-4 md:mb-0">
+                            <h3 className="text-lg font-bold mb-2">URL Shortener</h3>
+                            <p className="text-sm text-gray-300 max-w-md">
+                                Simplifica tus enlaces para compartirlos de manera más efectiva en todas tus redes sociales y comunicaciones.
+                            </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6">
+                            <a 
+                                href="mailto:herreriasramireza@gmail.com" 
+                                className="text-gray-300 hover:text-blue-300 transition-colors"
+                            >
+                                herreriasramireza@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div className="flex flex-col md:flex-row justify-between items-center border-t border-gray-700 pt-6">
+                        <p className="text-sm md:text-base mb-4 md:mb-0">
+                            &copy; 2025 URL Shortener - Alex Herrerias Ramirez. Todos los derechos reservados.
+                        </p>
+                        <div className="flex space-x-6 text-sm md:text-base">
+                            <button 
+                                onClick={() => navigate('/privacy')} 
+                                className="text-gray-300 hover:text-blue-300 transition-colors"
+                            >
+                                Privacidad
+                            </button>
+                            <button 
+                                onClick={() => navigate('/terms')} 
+                                className="text-gray-300 hover:text-blue-300 transition-colors"
+                            >
+                                Términos
+                            </button>
+                            <button 
+                                onClick={() => navigate('/contact')} 
+                                className="text-gray-300 hover:text-blue-300 transition-colors"
+                            >
+                                Contacto
+                            </button>
+                        </div>
                     </div>
                 </div>
             </footer>

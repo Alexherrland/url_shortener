@@ -2,19 +2,32 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8000/api/users/';
 
+// Create axios instance with default config
+const api = axios.create({
+    withCredentials: true,
+    headers: {
+        'Content-Type': 'application/json',
+    }
+});
+
 export const authService = {
     login: async (username, password) => {
         try {
-            const response = await axios.post(`${BASE_URL}login/`, { 
+            const response = await api.post(`${BASE_URL}login/`, { 
                 username, 
                 password 
             });
             
-            // store the user info
-            localStorage.setItem('user', JSON.stringify(response.data.user));
+            // store the user info with token for API calls
+            const userData = {
+                ...response.data.user,
+                token: response.data.token // Store token if your backend sends one
+            };
+            
+            localStorage.setItem('user', JSON.stringify(userData));
             localStorage.setItem('is_admin', response.data.is_staff);
             
-            return response.data.user;
+            return userData;
         } catch (error) {
             console.error('Login error:', error);
             throw error;
@@ -23,7 +36,7 @@ export const authService = {
 
     register: async (username, email, password, isAdmin = false) => {
         try {
-            const response = await axios.post(`${BASE_URL}`, { 
+            const response = await api.post(`${BASE_URL}`, { 
                 username, 
                 email, 
                 password,

@@ -4,16 +4,27 @@ from django.core.validators import URLValidator
 import string
 import random
 
+class CookieTracker(models.Model):
+    """Track cookies for anonymous users"""
+    cookie_id = models.CharField(max_length=255, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_used = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Cookie: {self.cookie_id}"
+
 class ShortURL(models.Model):
     original_url = models.URLField(validators=[URLValidator()])
     short_code = models.CharField(max_length=10, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     clicks = models.IntegerField(default=0)
     
-    # user association
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    cookie_id = models.CharField(max_length=255, null=True, blank=True)
-
+    # User association for logged users
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='short_urls')
+    
+    # Cookie association for anonymous users
+    cookie = models.ForeignKey(CookieTracker, on_delete=models.CASCADE, null=True, blank=True, related_name='short_urls')
+    
     def save(self, *args, **kwargs):
         if not self.short_code:
             self.short_code = self.generate_unique_short_code()

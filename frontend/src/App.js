@@ -2,10 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Login from './components/Login';
+import Privacy from './components/Privacy';
+import Terms from './components/Terms';
+import Contact from './components/Contact';
 import authService from './services/authService';
 import './App.css';
 
-// PRC
+// PRC (Private Route Component)
 const PrivateRoute = ({ children }) => {
     return authService.isAuthenticated() 
         ? children 
@@ -26,6 +29,9 @@ function App() {
                         } 
                     />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/terms" element={<Terms />} />
+                    <Route path="/contact" element={<Contact />} />
                 </Routes>
             </div>
         </Router>
